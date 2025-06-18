@@ -123,7 +123,7 @@ const TariffGrid = () => {
               280.000 FCFA
             </h1>
             <h1 className="text-white text-base">
-              Pour toute question concernant votre inscription, nous vous
+              Pour toutes questions concernant votre inscription, nous vous
               invitons à contacter le service des admissions.
             </h1>
           </motion.div>
@@ -135,14 +135,14 @@ const TariffGrid = () => {
             transition={{ duration: 0.8 }}
           >
             <a
-              href="mailto:admissions@exemple.com"
+              href="info@ecmac-gabon.org"
               className="px-6 py-3 flex justify-center items-center gap-2 text-[#419b60] bg-white hover:bg-white/80 rounded-md shadow-lg transition-colors duration-300"
             >
               <Icon className="text-xl" icon="line-md:email-twotone" />
               Envoyer un e-mail
             </a>
             <a
-              href="tel:+1234567890"
+              href="+24166546874"
               className="px-6 flex justify-center items-center gap-2 py-3 text-white bg-[#120158] hover:bg-[#0e013e] rounded-md shadow-lg transition-colors duration-300"
             >
               <Icon className="text-xl" icon="line-md:phone-call-loop" />

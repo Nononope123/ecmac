@@ -70,7 +70,7 @@ const HeroCarousel = () => {
           <img
             src={slide.image}
             alt={slide.title}
-            className="w-full h-screen object-cover"
+            className="object-cover w-full h-full "
           />
 
           {/* Contenu textuel avec animation */}

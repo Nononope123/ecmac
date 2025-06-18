@@ -41,9 +41,12 @@ export default function About() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.5, duration: 0.8 }}
             >
-              <h2 className="text-white text-3xl md:text-6xl font-bold">
+              <h2 className="text-white text-4xl md:text-6xl font-bold flex justify-center">
                 À propos de nous
               </h2>
+              <p className="text-white sm:text-sm md:text-lg mt-4 pl-1 text-center px-5">
+                Apprenez en plus sur notre histoire, nos valeurs et nos missions.
+              </p>
             </motion.div>
           </div>
         </motion.section>
@@ -78,7 +81,7 @@ export default function About() {
               transition={{ duration: 0.8 }}
             >
               <Image
-                src="/about2.jpg"
+                src="/etudiants.jpg"
                 alt="ECMAC"
                 width={1000}
                 height={1000}
@@ -100,7 +103,7 @@ export default function About() {
                   À propos de l'ECMAC
                 </h2>
               </div>
-              <h1 className="text-[#130159] mt-2 font-bold text-4xl md:text-5xl">
+              <h1 className="text-[#130159] mt-2 font-bold text-4xl md:text-5xl mb-5">
                 L&apos;ECMAC a 5 ans !
               </h1>
               <p className="text-gray-700 mb-2">

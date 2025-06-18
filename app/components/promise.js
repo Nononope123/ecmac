@@ -7,7 +7,7 @@ const blockData = [
     description:
       "ECMAC propose des Licences Professionnelles conçues pour offrir une formation de qualité et préparer les étudiants à exceller dans leur domaine.",
     icon: "flat-color-icons:diploma-2",
-    link: "formations.php",
+    link: "/sector",
     linkText: "Lire plus",
   },
   {
@@ -16,7 +16,7 @@ const blockData = [
     description:
       "ECMAC dispense des Masters Professionnels visant à approfondir vos compétences et à vous positionner comme un expert dans votre spécialité.",
     icon: "flat-color-icons:diploma-1",
-    link: "formations.php",
+    link: "/sector",
     linkText: "Lire plus",
   },
   {
@@ -25,7 +25,7 @@ const blockData = [
     description:
       "Les inscriptions sont ouvertes pour les étudiants souhaitant se spécialiser dans les métiers innovants de la monétique et des transactions électroniques sécurisées.",
     icon: "emojione-v1:pen-over-stamped-envelope",
-    link: "admission.php",
+    link: "/admission",
     linkText: "Lire plus",
   },
 ];

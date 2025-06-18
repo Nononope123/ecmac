@@ -10,7 +10,7 @@ const filiere = [
     description:
       "La Licence Professionnelle Monétique et Sécurité des Systèmes forme des étudiants capables de gérer l’environnement de sécurité des automates bancaires, déployer un serveur Front-Office et Back-Office Monétique...",
     imgSrc: "/fil1.jpeg",
-    detailsLink: "formations-details.php?id=1",
+    detailsLink: "/sector",
   },
   {
     id: 2,
@@ -19,7 +19,7 @@ const filiere = [
     description:
       "Ce programme vise à développer des compétences avancées en cybersécurité et en administration des réseaux modernes...",
     imgSrc: "/fil2.webp",
-    detailsLink: "formations-details.php?id=2",
+    detailsLink: "/sector",
   },
   {
     id: 3,
@@ -28,7 +28,7 @@ const filiere = [
     description:
       "Un programme court conçu pour maîtriser les dernières technologies de développement web, telles que React et Node.js.",
     imgSrc: "/fil3.jpeg",
-    detailsLink: "formations-details.php?id=3",
+    detailsLink: "/sector",
   },
   {
     id: 4,
@@ -37,7 +37,7 @@ const filiere = [
     description:
       "Cette formation forme des experts en gestion des systèmes d’information, combinant informatique et management.",
     imgSrc: "/fil6.jpeg",
-    detailsLink: "formations-details.php?id=4",
+    detailsLink: "/sector",
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const filiere = [
     description:
       "Un programme innovant axé sur l’application de l’intelligence artificielle dans divers secteurs industriels.",
     imgSrc: "/fil5.jpeg",
-    detailsLink: "formations-details.php?id=5",
+    detailsLink: "/sector",
   },
 ];
 
@@ -69,14 +69,14 @@ export default function Filiere() {
         {filiere.map((course) => (
           <div key={course.id} className="w-full ">
             <div className="">
-              <div className="thumb fix overflow-hidden rounded-lg">
+              <div className="overflow-hidden rounded-lg">
                 <a href={course.detailsLink} className="block">
                   <Image
                     src={course.imgSrc}
                     alt={course.title}
                     width={400}
                     height={300}
-                    className="transform w-full h-full  transition-transform duration-300 hover:scale-110 object-cover"
+                    className="transform w-full h-full transition-transform duration-300 hover:scale-110 object-cover"
                   />
                 </a>
               </div>

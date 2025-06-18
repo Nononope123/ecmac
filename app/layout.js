@@ -24,8 +24,12 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
+        <div className="sticky top-0 z-50">
+        <Header/>
+        </div>
+
         {children}
+
         <Footer />
       </body>
     </html>

@@ -9,7 +9,7 @@ export default function Sector() {
             {/*Breadcrumb Area*/}
             <motion.section
             className="flex items-center bg-cover bg-center"
-            style={{backgroundImage: 'url("/about.jpg")', height: "400px" }}
+            style={{backgroundImage: 'url("/slide1.jpeg")', height: "400px" }}
             >
             <div className="flex justify-center items-center bg-black w-full h-full bg-opacity-55">
                 <motion.div
@@ -19,7 +19,7 @@ export default function Sector() {
                     <h2 className="text-white text-md md:text-6xl font-bold">
                         Toute l'actualité de l'école
                     </h2>
-                    <p className="text-white mt-4 pl-20">
+                    <p className="text-white sm:text-sm md:text-lg mt-4 pl-20">
                         Découvrez les dernières actualités de l'ECMAC et de sa communauté.
                     </p>
                 </motion.div>

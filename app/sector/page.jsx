@@ -16,9 +16,12 @@ function page() {
                 initial={{opacity: 0, scale: 0.8}}
                 animate={{opacity: 1, scale: 1}}
                 transition={{delay: 0.5, duration: 0.8}}>
-                    <h2 className="text-white text-3xl md:text-6xl font-bold">
+                    <h2 className="text-white text-5xl md:text-6xl font-bold flex justify-center">
                         Filières
                     </h2>
+                    <p className="text-white sm:text-sm md:text-lg mt-4 md:pl-20 text-center px-5">
+                        Explorez nos différentes filières et trouvez celle qui correspond à vos ambitions.
+                    </p>
                 </motion.div>
             </div>
             </motion.section>

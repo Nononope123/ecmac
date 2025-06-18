@@ -17,30 +17,30 @@ function Procedure() {
             <h3 className="font-bold text-[#51be78] mb-5 underline underline-offset-4">
                 Prérequis d&apos;admission :
             </h3>
-            <h2 className="text-black  text-md font-bold mb-2">
+            <h2 className="text-[#130159] text-md font-bold mb-2">
                 1ère Etape
             </h2>
 
             <ul className="">
-                <li className="list-disc font-bold mb-1">
+                <li className="list-disc font-bold mb-1 text-[#130159]">
                 Admission en 1ère Année de Licence Professionnelle en Monétique et Sécurité des Systèmes (LP1-MMS) :
                 </li>
                 <li className="text-gray-600">
                 Être titulaire d'un Bac A1, B, C, D, F2, F3, etc.
                 </li>
-                <li className="list-disc font-bold mb-1">
+                <li className="list-disc font-bold mb-1 text-[#130159]">
                 Admission en 1ère Année de Licence Professionnelle en Monétique et Transactions Electroniques Sécurisées (LP1-MTES) :
                 </li>
                 <li className="text-gray-600">
                 Être titulaire d'un Bac A1, B, C, D, F2, F3, etc.
                 </li>
-                <li className="list-disc font-bold mb-1">
+                <li className="list-disc font-bold mb-1 text-[#130159]">
                 Admission en 1ère Année de Licence Professionnelle en Cybersécurité Monétique et Certification Numérique (CSM-CN) :
                 </li>
                 <li className="text-gray-600">
                 Être titulaire d'un Bac C ou D
                 </li>
-                <li className="list-disc font-bold mb-1">
+                <li className="list-disc font-bold mb-1 text-[#130159]">
                 Admission en Master Professionnelle 1 (*) en Monétique et Transactions Electroniques (MP1-MTES) :
                 </li>
                 <li className="text-gray-600 mb-5">
@@ -51,16 +51,12 @@ function Procedure() {
                 </li>
             </ul>
 
-
-            <h2 className="text-black  text-md font-bold mb-1">
+            <h2 className="text-[#130159] text-md font-bold mb-1">
                 2ème Etape
             </h2>
-            <h3 className="font-bold mb-1">
+            <h3 className="font-bold mb-1 text-[#130159]">
                 Constitution des dossiers de candidature :
             </h3>
-            <p className="text-gray-600 text-justify mb-2">
-                Pièces à joindre au dossier de candidature :
-            </p>
                 <ol className="text-gray-600">
                     <li className="flex gap-1">
                         <Icon icon="ic:baseline-check" width="20" height="20"   className="text-[#51be78]"/>
@@ -85,22 +81,21 @@ function Procedure() {
                         Relevé de note du bac</li>
                 </ol>
             <br/>
+             <h3 className="font-bold mb-1 text-[#130159]">
+                Inscription
+            </h3>
+            <p className="text-gray-600 text-justify">
+                Veuillez contacter le service de la scolarité pour avoir toutes les informations nécessaires à la procédure d’inscription et sur les filières <br/>
+                de formation choisies.
+            </p> <br/>
 
-            <h3 className="font-bold mb-1">
+            <h3 className="font-bold mb-1 text-[#130159]">
                 Contact du service de la scolarité
             </h3>
             <ol className="text-gray-600 mb-3">
                 <li className="mb-1">Mlle Alexia DAMBASSA</li>
                 <li className="">Tél : +241 (0)66 54 68 74</li>
             </ol>
-
-            <h3 className="font-bold mb-1">
-                Inscription
-            </h3>
-            <p className="text-gray-600 text-justify">
-                Prise de contact avec le service de la scolarité pour avoir toutes les informations nécessaires à la procédure d’inscription et sur les filières <br/>
-                de formation choisies.
-            </p> <br/>
 
         </div>
     </motion.section>

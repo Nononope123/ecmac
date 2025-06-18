@@ -1,98 +1,84 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Play, Download, Eye, Calendar, Users, GraduationCap, Building, Camera } from "lucide-react"
-import { useState } from "react"
-import Image from "next/image"
-import { HoverEffect } from "./hover"
- import { InteractiveCardsGrid} from "./cardeffect"
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Eye } from "lucide-react";
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import { AnimatePresence, motion } from "framer-motion";
 
+import { cn } from "@/lib/utils";
 
+import About2Image from "@/public/about2.jpg";
+import DiplomeImage from "@/public/diplome.jpg";
+import MemoireImage from "@/public/memoire.jpg";
+import AtelierImage from "@/public/atelier.jpg";
+import StageImage from "@/public/stage.jpg";
+import Communaute1Image from "@/public/communaute1.jpg";
+import IAImage from "@/public/ia.jpg";
+import Etudiants1Image from "@/public/etudiants.jpg";
+import About1Image from "@/public/about1.jpg";
+import Communaute2Image from "@/public/communaute2.jpg";
+import Communaute3Image from "@/public/communaute3.jpg";
+import Etudiants2Image from "@/public/etudiants1.jpg";
+import Etudiants3Image from "@/public/etudiants2.jpg";
+import Slide1 from "@/public/slide1.jpeg";
+import Slide2 from "@/public/slide2.jpeg";
+import Slide3 from "@/public/slide3.jpeg";
 
 export default function GaleriePage() {
-  const [activeFilter, setActiveFilter] = useState("Tous")
+  const [activeFilter, setActiveFilter] = useState("Tous");
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 6;
+  let [hoveredIndex, setHoveredIndex] = useState(null);
 
-  const filters = ["Tous", "Campus", "Étudiants", "Événements", "Diplômes", "Partenaires"]
+  const filters = ["Tous", "Campus", "Étudiants", "Événements", "Réussite"];
 
   const mediaItems = [
-    {
-      id: 1,
-      type: "image",
-      // title: "Campus ECMAC - Vue d'ensemble", // Commenté : Si tu ne veux plus ce titre pour aucune utilisation
-      category: "Campus",
-      // date: "Mai 2024",
-      // thumbnail: About2Image,
-    },
-    {
-      id: 2,
-      type: "image",
-      // title: "Cérémonie de remise des diplômes", // Commenté
-      category: "Diplômes",
-      // date: "Mai 2025",
-      // thumbnail: DiplomeImage,
-    },
-    {
-      id: 3,
-      type: "image",
-      // title: "Salle de mémoire", // Commenté
-      category: "Campus",
-      // thumbnail: MemoireImage,
-    },
-    {
-      id: 4,
-      type: "image",
-      // title: "Atelier pratique", // Commenté
-      category: "Étudiants",
-      // thumbnail: AtelierImage,
-    },
-    {
-      id: 5,
-      type: "image",
-      // title: "Stage en entreprise", // Commenté
-      category: "Réussite",
-      // thumbnail: StageImage,
-    },
-    {
-      id: 6,
-      type: "image",
-      // title: "Conférence IA", // Commenté
-      category: "Événements",
-      // thumbnail: IAImage,
-    },
-    {
-      id: 7,
-      type: "image",
-      // title: "Les Ecmaciennes luttent contre le cancer", // Commenté
-      category: "Campus",
-      // thumbnail: Communaute1Image,
-    },
-    {
-      id: 8,
-      type: "image",
-      // title: "Étudiants en groupe", // Commenté
-      category: "Étudiants",
-      // thumbnail: Etudiants1Image,
-    },
-    {
-      id: 9,
-      type: "image",
-      // title: "Bâtiment principal", // Commenté
-      category: "Campus",
-      // thumbnail: Image1Png,
-    },
-  ]
+    { id: 1, type: "image", category: "Campus", thumbnail: About2Image },
+    { id: 2, type: "image", category: "Campus", thumbnail: Communaute2Image },
+    { id: 3, type: "image", category: "Réussite", thumbnail: MemoireImage },
+    { id: 4, type: "image", category: "Étudiants", thumbnail: AtelierImage },
+    { id: 5, type: "image", category: "Campus", thumbnail: About1Image },
+    { id: 6, type: "image", category: "Événements", thumbnail: IAImage },
+    { id: 7, type: "image", category: "Campus", thumbnail: Communaute1Image },
+    { id: 8, type: "image", category: "Étudiants", thumbnail: Etudiants1Image },
+    { id: 9, type: "image", category: "Réussite", thumbnail: StageImage },
+    { id: 10, type: "image", category: "Campus", thumbnail: Communaute3Image },
+    { id: 11, type: "image", category: "Réussite", thumbnail: DiplomeImage },
+    { id: 12, type: "image", category: "Étudiants", thumbnail: Etudiants2Image },
+    { id: 13, type: "image", category: "Campus", thumbnail: Slide3 },
+    { id: 14, type: "image", category: "Étudiants", thumbnail: Slide1 },
+    { id: 15, type: "image", category: "Campus", thumbnail: Slide2 },
+    { id: 16, type: "image", category: "Étudiants", thumbnail: Etudiants3Image },
+  ];
 
   const filteredItems =
-    activeFilter === "Tous" ? mediaItems : mediaItems.filter((item) => item.category === activeFilter)
+    activeFilter === "Tous" ? mediaItems : mediaItems.filter((item) => item.category === activeFilter);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const paginatedItems = filteredItems.slice(startIndex, endIndex);
+
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
+  const handlePreviousPage = () => {
+    setCurrentPage((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
+  };
+
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [activeFilter]);
 
   return (
-      <div>
-      {/* Filters Section (inchangée) */}
-      {/* <section className="py-8 border-b">
+    <div>
+      <section className="py-8 border-b">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-wrap gap-2 justify-center ">
+          <div className="flex flex-wrap gap-2 justify-center">
             {filters.map((filter) => (
               <Button
                 key={filter}
@@ -106,124 +92,105 @@ export default function GaleriePage() {
             ))}
           </div>
         </div>
-      </section> */}
+      </section>
 
-      {/* Gallery Section */}
-      {/* <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredItems.map((item) => (
-              <Card
+      <section className="py-8">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 py-10 ">
+            {paginatedItems.map((item, idx) => (
+              <a
+                href={item.thumbnail.src}
                 key={item.id}
-                className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 group overflow-hidden "
-            >
-                <div className="relative">
-                  <div className="h-64 relative overflow-hidden rounded-t-lg">
+                className="relative group block p-4 h-full w-full"
+                onMouseEnter={() => setHoveredIndex(idx)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`Voir l'image ${item.category}`}
+              >
+                <AnimatePresence>
+                  {hoveredIndex === idx && (
+                    <motion.span
+                      className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block rounded-3xl"
+                      layoutId="hoverBackground"
+                      initial={{ opacity: 0 }}
+                      animate={{
+                        opacity: 1,
+                        transition: { duration: 0.25 },
+                      }}
+                      exit={{
+                        opacity: 0,
+                        transition: { duration: 0.10, delay: 0.10 },
+                      }}
+                    />
+                  )}
+                </AnimatePresence>
+
+                <div
+                  className={cn(
+                    "rounded-2xl h-full w-full overflow-hidden  group-hover:border-slate-700 relative z-20",
+                    "shadow-xl hover:shadow-3xl transition-all duration-500"
+                  )}
+                >
+                  <div className="relative z-50 pb-20">
                     {item.thumbnail && (
-                      <Image
-                        src={item.thumbnail} */}
-                        // L'attribut alt est important pour l'accessibilité même si le titre n'est pas affiché
-                        {/* alt={item.title || item.category || `Image de la galerie ${item.id}`}
-                        layout="fill"
-                        objectFit="cover"
-                        className="transition-transform duration-300 group-hover:scale-105" */}
-                      {/* />
-                    )} */}
-                    {/* Overlay de dégradé sur l'image */}
-                    {/* <div className="absolute inset-0 bg-gradient-to-br from-emerald-400 to-blue-500 opacity-20"></div> */}
-
-                    {/* Overlay pour les vidéos (si le type est video) - inchangé car c'est un bouton de lecture */}
-                    {/* {item.type === "video" && (
-                      <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors z-10">
-                        <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center">
-                          <Play className="w-6 h-6 text-gray-900 ml-1" />
+                      <div className="relative h-64 w-full rounded-lg overflow-hidden border-transparent group-hover:border-slate-700 relative z-20">
+                        <Image
+                          src={item.thumbnail}
+                          alt={`Image de la galerie ${item.id}`}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                          style={{ objectFit: "cover" }}
+                          className="transition-transform duration-300 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100  z-30">
+                          <div
+                            className="bg-white/90 px-3 py-2 rounded-md flex items-center justify-center pointer-events-none  font-bold text-[#130159]"
+                          >
+                            <Eye className="w-4 h-4 mr-1 text-[#21c45d]" />
+                            Voir
+                          </div>
                         </div>
                       </div>
-                    )} */}
-
-                    {/* Durée pour les vidéos (si le type est video et duration existe) - inchangé */}
-                    {/* {item.type === "video" && item.duration && (
-                      <div className="absolute bottom-4 right-4 z-20">
-                        <Badge variant="secondary" className="bg-black/70 text-white">
-                          {item.duration}
+                    )}
+                    {item.category && (
+                        <Badge className="text-xs bg-[#130159] text-white absolute bottom-6 left-6 z-30">
+                            {item.category}
                         </Badge>
-                      </div>
-                    )}
- */}
-                    {/* Overlay hover (Voir/Télécharger) - inchangé */}
-                    {/* <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center opacity-0 group-hover:opacity-100 z-30">
-                      <div className="flex gap-2">
-                        <Button size="sm" className="bg-white/90 text-gray-900 hover:bg-white">
-                          <Eye className="w-4 h-4 mr-1" />
-                          Voir
-                        </Button>
-                        <a
-                        href="/about2.jpg"
-                        download
-                        className="bg-white/90 border-white/90 text-gray-900 hover:bg-white px-3 py-2 rounded-md"
-                        >
-                        {item.type === "image" && (
-                <Download className="w-4 h-4" />
-                        
-                        )}
-                          </a>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
-
-                {/* <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Badge variant="outline" className="text-xs bg-[#130159] text-white">
-                      {item.category}
-                    </Badge>
-                    {/* Afficher la date seulement si elle existe */}
-                    {/* {item.date && (
-                        <div className="flex items-center gap-1 text-gray-500 text-xs">
-                        <Calendar className="w-3 h-3" />
-                        <span>{item.date}</span>
-                        </div>
                     )}
                   </div>
- */} 
-                  {/* TITRE DE L'ARTICLE - RETIRÉ ICI */}
-                  {/*
-                  <h3 className="font-bold text-gray-900 mb-3 group-hover:text-emerald-600 transition-colors">
-                    {item.title || "Titre non défini"}
-                  </h3>
-                  */}
-
-                  {/* <div className="flex items-center justify-between text-sm text-gray-500"> */}
-                    {/* Afficher les vues seulement si elles existent */}
-                    {/* {item.views !== undefined && (
-                        <div className="flex items-center gap-1">
-                        <Eye className="w-4 h-4" />
-                        <span>{item.views} vues</span>
-                        </div>
-                    )}
-
-
-                  </div>
-                </CardContent>
-              </Card>
+                </div>
+              </a>
             ))}
           </div>
- */}
-          {/* Load More Button (inchangé) */}
-          {/* <div className="text-center mt-12">
-            <Button className="bg-emerald-600 hover:bg-emerald-700">
-            <span className="absolute inset-0 w-full h-full bg-[#130159] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0"></span>
-            <span className="relative z-10 transition-colors duration-500 ease-in-out group-hover:text-[#ffffff]">
-              Charger plus de contenu
+
+          <div className="flex justify-center items-center gap-4 mt-12">
+            <Button
+              onClick={handlePreviousPage}
+              disabled={currentPage === 1}
+              className="bg-emerald-600 hover:bg-emerald-700"
+            >
+              <span className="absolute inset-0 w-full h-full bg-[#130159] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0 group-hover:text-white"></span>
+              <span className="relative z-10 text-white transition-colors duration-500 ease-in-out ">
+              Précédent
+              </span>
+            </Button>
+            <span className="text-gray-700 dark:text-gray-300">
+              {currentPage} sur {totalPages}
             </span>
-              </Button>
+            <Button
+              onClick={handleNextPage}
+              disabled={currentPage === totalPages}
+              className="bg-emerald-600 hover:bg-emerald-700"
+            >
+              <span className="absolute inset-0 w-full h-full bg-[#130159] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0 group-hover:text-white"></span>
+              <span className="relative z-10 text-white transition-colors duration-500 ease-in-out ">
+              Suivant
+              </span>
+            </Button>
           </div>
         </div>
-      </section> */}
-       <div className="max-w-5xl mx-auto px-8">
-      {/* <HoverEffect items={mediaItems}/> */}
-      <InteractiveCardsGrid />
-       </div>
-      </div>
-  )
+      </section>
+    </div>
+  );
 }

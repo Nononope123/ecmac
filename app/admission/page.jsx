@@ -13,18 +13,21 @@ export default function Sector() {
             {/*Breadcrumb Area*/}
             <motion.section
             className="flex items-center bg-cover bg-center"
-            style={{backgroundImage: 'url("/about.jpg")', height: "400px" }}
+            style={{backgroundImage: 'url("/slide2.jpeg")', height: "400px" }}
             >
-            <div className="flex justify-center items-center bg-black w-full h-full bg-opacity-55">
+            <div className="flex justify-center items-center bg-black w-full h-full bg-opacity-55 ">
                 <motion.div
                 initial={{opacity: 0, scale: 0.8}}
                 animate={{opacity: 1, scale: 1}}
                 transition={{delay: 0.5, duration: 0.8}}>
-                    <h2 className="text-white text-3xl md:text-6xl font-bold">
+                    <h2 className="text-white text-5xl md:text-6xl font-bold flex justify-center">
                         Admission
                     </h2>
-                </motion.div>
-            </div>
+                    <p className="text-white sm:text-sm md:text-lg mt-2 md:pl-20 flex text-center px-5">
+                        Retrouvez les étapes et procédures nécessaires pour votre admission.
+                    </p>
+                     </motion.div>
+                    </div>
             </motion.section>
             <motion.div
             className="text-white -mt-[30px] flex items-center justify-center"
@@ -70,7 +73,7 @@ export default function Sector() {
                     Attention!
                     </motion.h1>
                     <motion.p
-                    className="text-[#130159] text-lg"
+                    className="text-[#130159] text-xl"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

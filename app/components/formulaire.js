@@ -28,10 +28,10 @@ export function Formulaire() {
               />{" "}
                 Pré-inscription
         </h1>
-            <h1 className="mt-2 text-2xl font-extrabold text-gray-900 sm:text-5xl flex justify-center">Lancez votre inscription en ligne.</h1>
+            <h1 className="mt-2 text-2xl font-extrabold text-[#130159] sm:text-5xl flex justify-center">Lancez votre inscription en ligne.</h1>
             <p className="mt-4 text-md text-gray-500 flex justify-center mb-10">Un processus simple et rapide pour rejoindre notre établissement.</p>
 
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8 bg-white shadow-md p-20 rounded-md">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8 bg-white shadow-xl p-20 rounded-md border ">
           {/* Nom */}
           <div>
             <label htmlFor="nom" className="block text-md font-medium text-gray-700">Votre nom</label>
@@ -178,7 +178,7 @@ export function Formulaire() {
           </div>
 
           {/* Bouton de soumission */}
-          <div className="md:col-span-2 mt-4 flex justify-center"> {/* Le bouton prend toute la largeur et a un peu d'espace au-dessus */}
+          <div className="md:col-span-2 mt-4 flex justify-center"> 
            <Button className=" " variant="default">
             <span className="absolute inset-0 w-full h-full bg-[#130159] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0"></span>
             <span className="relative z-10 transition-colors duration-500 ease-in-out group-hover:text-[#ffffff]">

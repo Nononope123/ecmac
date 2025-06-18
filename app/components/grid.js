@@ -56,48 +56,45 @@ const Grid = () => {
       <div className="container">
         <div className="flex justify-center">
           <div className="flex flex-col ">
-            <h1 className="text-[#130159] mt-2 font-bold text-4xl md:text-5xl flex justify-center mb-3">
+            <h1 className="text-[#130159] mt-2 font-bold text-4xl md:text-5xl flex justify-center mb-6">
               Grille de tarifs
             </h1>
           </div>
         </div>
-<div className="container mx-auto">
-        {programFees.map((program, programIndex) => (
-          <div key={programIndex} className="mb-12 overflow-x-auto">
-            <table className="min-w-full bg-white shadow-lg">
-              <thead>
-                <tr>
-                  <th colSpan="2" className="py-3 px-4 bg-[#130159] text-white text-center font-semibold">
-                    {program.title}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {program.fees.map((item, itemIndex) => (
-                  <tr
-                    key={itemIndex}
-                    className={`
-                      ${itemIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
-                      hover:bg-gray-200 transition-colors duration-200 ease-in-out
-                    `}
-                  >
-                    {/* Colonne description */}
-                    <td className="py-3 px-4 text-gray-800 border-b border-gray-200 text-left">
-                      {item.type}
-                    </td>
-                    {/* Colonne montant avec la ligne séparatrice à gauche */}
-                    <td className="py-3 px-4 text-gray-800 border-b border-l border-gray-300 text-right">
-                      {item.amount}
-                    </td>
+        <div className="container mx-auto">
+          {programFees.map((program, programIndex) => (
+            <div key={programIndex} className="mb-12 overflow-x-auto">
+              <table className="min-w-full bg-white shadow-lg">
+                <thead>
+                  <tr>
+                    <th colSpan="2" className="py-3 px-4 bg-[#130159] text-white text-center font-semibold">
+                      {program.title}
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        ))}
-      </div>
+                </thead>
+                {/* Correction : Pas d'espaces ou retours à la ligne entre <tbody> et son contenu direct */}
+                <tbody>{program.fees.map((item, itemIndex) => (
+                    <tr
+                      key={itemIndex}
+                      className={`
+                        ${itemIndex % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
+                        hover:bg-gray-200 transition-colors duration-200 ease-in-out
+                      `}
+                    >
+                      <td className="py-3 px-4 text-gray-800 border-b border-gray-200 text-left">
+                        {item.type}
+                      </td>
+                      <td className="py-3 px-4 text-gray-800 border-b border-l border-gray-300 text-right">
+                        {item.amount}
+                      </td>
+                    </tr>
+                  ))}</tbody>{ /* <-- Ni ici */ }
+              </table>
+            </div>
+          ))}
+        </div>
           <div className="flex flex-col mt-10 mb-10">
-            <h1 className="text-[#130159] mt-2 font-bold text-4xl md:text-3xl flex justify-center mb-3">
+            <h1 className="text-[#130159] mt-2 font-bold text-4xl md:text-3xl flex justify-center mb-6">
               Calendrier des inscriptions administratives pour l’année académique 2024-2025
             </h1>
             <p className="text-gray-400 flex justify-center mb-2">
@@ -110,36 +107,31 @@ const Grid = () => {
                 Juin à Août 2024
             </p>
           </div>
-     <div className="container mx-auto">
-        {/* Première vague */}
-        <div className="mb-12 overflow-x-auto">
-          <table className="min-w-full bg-white rounded-lg shadow-lg">
-            <thead>
-              <tr>
-                {/* Titre 'DATES' aligné à gauche */}
-                <th className="py-3 px-4 bg-[#130159] text-white text-left font-semibold">DATES</th>
-                {/* Titre 'NIVEAUX' aligné à droite */}
-                <th className="py-3 px-4 bg-[#130159] text-white text-right font-semibold">NIVEAUX</th>
-              </tr>
-            </thead>
-            <tbody>
-              {firstWaveDates.map((row, index) => (
-                <tr
-                  key={index}
-                  className={`
-                    ${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
-                    hover:bg-gray-200 transition-colors duration-200 ease-in-out
-                  `}
-                >
-                  {/* Cellule DATE : alignée à gauche, sans bordure droite */}
-                  <td className="py-2 px-4 w-[80%] text-gray-800 border-b border-gray-200 whitespace-pre-line text-left font-bold">{row.date}</td>
-                  {/* Cellule NIVEAUX : alignée à droite, avec bordure gauche */}
-                  <td className="py-2 px-4 text-gray-800 border-b  border-l border-gray-300 whitespace-pre-line text-right">{row.levels}</td>
+        <div className="container mx-auto">
+          {/* Première vague */}
+          <div className="mb-12 overflow-x-auto">
+            <table className="min-w-full bg-white rounded-lg shadow-lg">
+              <thead>
+                <tr>
+                  <th className="py-3 px-4 bg-[#130159] text-white text-left font-semibold">DATES</th>
+                  <th className="py-3 px-4 bg-[#130159] text-white text-right font-semibold">NIVEAUX</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              {/* Correction : Pas d'espaces ou retours à la ligne entre <tbody> et son contenu direct */}
+              <tbody>{firstWaveDates.map((row, index) => (
+                  <tr
+                    key={index}
+                    className={`
+                      ${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
+                      hover:bg-gray-200 transition-colors duration-200 ease-in-out
+                    `}
+                  >
+                    <td className="py-2 px-4 w-[80%] text-gray-800 border-b border-gray-200 whitespace-pre-line text-left font-bold">{row.date}</td>
+                    <td className="py-2 px-4 text-gray-800 border-b  border-l border-gray-300 whitespace-pre-line text-right">{row.levels}</td>
+                  </tr>
+                ))}</tbody>{ /* <-- Ni ici */ }
+            </table>
+          </div>
             <div className="flex flex-col mt-10 mb-5">
             <h1 className="text-[#51be78]  font-bold flex justify-center underline mb-2">
                 Deuxième vague
@@ -148,35 +140,30 @@ const Grid = () => {
                 Du 1er au 16 Septembre 2024
             </p>
           </div>
-        <div className="mb-12 overflow-x-auto">
-          <table className="min-w-full bg-white rounded-lg shadow-lg"> {/* Ajout de rounded-lg ici aussi */}
-            <thead>
-              <tr>
-                {/* Titre 'DATES' aligné à gauche */}
-                <th className="py-2  px-4 bg-[#130159] text-white text-left font-semibold">DATES</th> {/* Uniformisation du padding et ajout de rounded-tl-lg */}
-                {/* Titre 'NIVEAUX' aligné à droite */}
-                <th className="py-2 px-4 bg-[#130159] text-white text-right font-semibold">NIVEAUX</th> {/* Uniformisation du padding et ajout de rounded-tr-lg */}
-              </tr>
-            </thead>
-            <tbody>
-              {secondWaveDates.map((row, index) => (
-                <tr
-                  key={index}
-                  className={`
-                    ${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
-                    hover:bg-gray-200 transition-colors duration-200 ease-in-out
-                  `}
-                >
-                  {/* Cellule DATE : alignée à gauche, sans bordure droite */}
-                  <td className="py-3 w-[80%] px-4 text-gray-800 border-b border-gray-200 whitespace-pre-line text-left font-bold">{row.date}</td> {/* Uniformisation du padding */}
-                  {/* Cellule NIVEAUX : alignée à droite, avec bordure gauche */}
-                  <td className="py-3 px-4 text-gray-800 border-b  border-l border-gray-300 whitespace-pre-line text-right">{row.levels}</td> {/* Uniformisation du padding et ajout de border-l border-gray-300 */}
+          <div className="mb-12 overflow-x-auto">
+            <table className="min-w-full bg-white rounded-lg shadow-lg">
+              <thead>
+                <tr>
+                  <th className="py-2  px-4 bg-[#130159] text-white text-left font-semibold">DATES</th>
+                  <th className="py-2 px-4 bg-[#130159] text-white text-right font-semibold">NIVEAUX</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              {/* Correction : Pas d'espaces ou retours à la ligne entre <tbody> et son contenu direct */}
+              <tbody>{secondWaveDates.map((row, index) => (
+                  <tr
+                    key={index}
+                    className={`
+                      ${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}
+                      hover:bg-gray-200 transition-colors duration-200 ease-in-out
+                    `}
+                  >
+                    <td className="py-3 w-[80%] px-4 text-gray-800 border-b border-gray-200 whitespace-pre-line text-left font-bold">{row.date}</td>
+                    <td className="py-3 px-4 text-gray-800 border-b  border-l border-gray-300 whitespace-pre-line text-right">{row.levels}</td>
+                  </tr>
+                ))}</tbody>{ /* <-- Ni ici */ }
+            </table>
+          </div>
         </div>
-         </div>
       </div>
 
       <motion.div
@@ -208,7 +195,7 @@ const Grid = () => {
               280.000 FCFA
             </h1>
             <h1 className="text-white text-base">
-              Pour toute question concernant votre inscription, nous vous
+              Pour toutes questions concernant votre inscription, nous vous
               invitons à contacter le service des admissions.
             </h1>
           </motion.div>
