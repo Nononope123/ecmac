@@ -16,10 +16,10 @@ export default function Sector() {
                 initial={{opacity: 0, scale: 0.8}}
                 animate={{opacity: 1, scale: 1}}
                 transition={{delay: 0.5, duration: 0.8}}>
-                    <h2 className="text-white text-md md:text-6xl font-bold">
+                    <h2 className="text-white text-3xl md:text-6xl font-bold flex justify-center">
                         Toute l'actualité de l'école
                     </h2>
-                    <p className="text-white sm:text-sm md:text-lg mt-4 pl-20">
+                    <p className="text-white sm:text-sm md:text-lg mt-4 md:pl-20 text-center px-5 ">
                         Découvrez les dernières actualités de l'ECMAC et de sa communauté.
                     </p>
                 </motion.div>

@@ -114,12 +114,14 @@ export default function Header() {
           </ul>
 
           {/* Bouton inscription */}
+          <a href="/sector">
           <Button className="hidden lg:flex relative overflow-hidden group">
             <span className="absolute inset-0 w-full h-full bg-[#130159] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0"></span>
             <span className="relative z-10 text-white transition-colors duration-500 ease-in-out">
               S'inscrire
             </span>
           </Button>
+          </a>
         </div>
       </div>
     </header>

@@ -99,7 +99,7 @@ function Procedure() {
 
         </div>
     </motion.section>
-  )
+)
 }
 
 export default Procedure

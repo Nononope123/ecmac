@@ -1,4 +1,4 @@
-"use client" // Indique que ce composant est un Client Component dans Next.js, ce qui permet l'utilisation de hooks React et d'interactivité.
+// "use client" // Indique que ce composant est un Client Component dans Next.js, ce qui permet l'utilisation de hooks React et d'interactivité.
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -13,6 +13,16 @@ import JpoImage from "@/public/jpo.jpg"
 import FemmeImage from "@/public/femme.jpg"
 import PaysImage from "@/public/pays.jpg"
 
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+
 
 export default function ActualitesPage() {
   const allActualites = [
@@ -21,7 +31,7 @@ export default function ActualitesPage() {
         title: "Remise des diplômes",
         excerpt:
         "Cérémonie de remise des diplômes pour la première et deuxième cuvée de l'ECMAC.",
-        date: "31 Mai 2025", // <-- VIRGULE AJOUTÉE ICI
+        date: "31 Mai 2025", 
         author: "Service Communication",
         category: "Événements",
         image: Diplome
@@ -72,8 +82,11 @@ export default function ActualitesPage() {
 
   const paginatedActualites = filteredActualites.slice(startIndex, endIndex)
 
-
   const totalPages = Math.ceil(filteredActualites.length / itemsPerPage)
+
+  const featuredActualite = allActualites[0];
+
+  const getPageLink = (page) => `#page=${page}`;
 
 
   const handlePreviousPage = () => {
@@ -92,23 +105,23 @@ export default function ActualitesPage() {
 
   const categories = ["Tous", "Événements", "Réussites", "Campus"]
 
-  const featuredActualite = allActualites[0];
   return (
     <>
 
       <section className="py-8 flex justify-center border-b">
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap gap-2">
-            {categories.map((category) => ( // <-- Correction ici: suppression de la parenthèse mal placée
-              <Button
+            {categories.map((category) => ( 
+              <button
                 key={category}
-                variant={activeCategory === category ? "default" : "outline"}
+                variant={activeCategory === category ? "border border-2 rounded-md text-[#130159] " : "" }
                 size="sm"
                 onClick={() => setActiveCategory(category)}
-                className={activeCategory === category ? "bg-emerald-600 hover:bg-emerald-700" : ""}
+                className={activeCategory === category ? "font-bold bg-[#130159] text-white px-3 py-1 border border-[#130159] rounded-md"
+                : "bg-white text-[#130159] px-3 py-1 border border-[#130159] rounded-md"}
               >
                 {category}
-              </Button>
+              </button>
             ))}
           </div>
         </div>
@@ -228,29 +241,33 @@ export default function ActualitesPage() {
               </div>
 
 
-              <div className="flex justify-center mt-12">
-                <Button
-                  onClick={handlePreviousPage}
-                  disabled={currentPage === 1}
-                  className="bg-emerald-600 hover:bg-emerald-700 mr-4"
-                >
-                  Précédent
-                </Button>
-                <span className="text-gray-700 dark:text-gray-300 flex items-center justify-center">
-                  Page {currentPage} sur {totalPages}
-                </span>
-                <Button
-                  onClick={handleNextPage}
-                  disabled={currentPage === totalPages}
-                  className="bg-emerald-600 hover:bg-emerald-700 ml-4"
-                >
-                <span className="absolute inset-0 w-full h-full bg-[#130159] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0 group-hover:text-white"></span>
-                <span className="relative z-10 text-white transition-colors duration-500 ease-in-out ">
-                  Suivant
-                  </span>
-                </Button>
-              </div>
-            </div>
+                  <Pagination className="mt-10">
+                    <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious href={getPageLink(currentPage - 1)}
+                        onClick={(e) => {
+                        e.preventDefault();
+                        handlePreviousPage();
+                        }} />
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationLink href="#" >
+                        {currentPage} sur {totalPages} 
+                      </PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                    {/* <PaginationEllipsis /> */}
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationNext href={getPageLink(currentPage + 1)}
+                        onClick={(e) => {
+                        e.preventDefault();
+                        handleNextPage();
+                        }}/>
+                    </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
+          </div>
 
 
             <div className="space-y-8">

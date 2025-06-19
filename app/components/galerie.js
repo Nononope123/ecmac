@@ -26,11 +26,23 @@ import Slide1 from "@/public/slide1.jpeg";
 import Slide2 from "@/public/slide2.jpeg";
 import Slide3 from "@/public/slide3.jpeg";
 
+import {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination"
+
+
 export default function GaleriePage() {
   const [activeFilter, setActiveFilter] = useState("Tous");
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
   let [hoveredIndex, setHoveredIndex] = useState(null);
+
 
   const filters = ["Tous", "Campus", "Étudiants", "Événements", "Réussite"];
 
@@ -70,6 +82,8 @@ export default function GaleriePage() {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
   };
 
+  const getPageLink = (page) => `#page=${page}`;
+
   useEffect(() => {
     setCurrentPage(1);
   }, [activeFilter]);
@@ -82,10 +96,11 @@ export default function GaleriePage() {
             {filters.map((filter) => (
               <Button
                 key={filter}
-                variant={activeFilter === filter ? "default" : "outline"}
-                size="sm"
+                variant={activeFilter === filter}
+                size="sm lg:md"
                 onClick={() => setActiveFilter(filter)}
-                className={activeFilter === filter ? "font-bold bg-emerald-600 hover:bg-emerald-700" : ""}
+                className={activeFilter === filter ? "font-bold bg-[#130159] text-white px-3 py-1 border border-[#130159] rounded-md" 
+                  : "text-[#130159] bg-white px-3 py-1 border border-[#130159] rounded-md"}
               >
                 {filter}
               </Button>
@@ -165,29 +180,32 @@ export default function GaleriePage() {
           </div>
 
           <div className="flex justify-center items-center gap-4 mt-12">
-            <Button
-              onClick={handlePreviousPage}
-              disabled={currentPage === 1}
-              className="bg-emerald-600 hover:bg-emerald-700"
-            >
-              <span className="absolute inset-0 w-full h-full bg-[#130159] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0 group-hover:text-white"></span>
-              <span className="relative z-10 text-white transition-colors duration-500 ease-in-out ">
-              Précédent
-              </span>
-            </Button>
-            <span className="text-gray-700 dark:text-gray-300">
-              {currentPage} sur {totalPages}
-            </span>
-            <Button
-              onClick={handleNextPage}
-              disabled={currentPage === totalPages}
-              className="bg-emerald-600 hover:bg-emerald-700"
-            >
-              <span className="absolute inset-0 w-full h-full bg-[#130159] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0 group-hover:text-white"></span>
-              <span className="relative z-10 text-white transition-colors duration-500 ease-in-out ">
-              Suivant
-              </span>
-            </Button>
+                  <Pagination className="mt-10">
+                    <PaginationContent>
+                    <PaginationItem>
+                      <PaginationPrevious href={getPageLink(currentPage - 1)}
+                        onClick={(e) => {
+                        e.preventDefault();
+                        handlePreviousPage();
+                        }} />
+                    </PaginationItem>
+                    <PaginationItem>
+                      <PaginationLink href="#" >
+                        {currentPage} sur {totalPages} 
+                      </PaginationLink>
+                    </PaginationItem>
+                    <PaginationItem>
+                    {/* <PaginationEllipsis /> */}
+                    </PaginationItem>
+                    <PaginationItem>
+                    <PaginationNext href={getPageLink(currentPage + 1)}
+                        onClick={(e) => {
+                        e.preventDefault();
+                        handleNextPage();
+                        }}/>
+                    </PaginationItem>
+                    </PaginationContent>
+                  </Pagination>
           </div>
         </div>
       </section>
