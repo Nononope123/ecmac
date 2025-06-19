@@ -356,8 +356,8 @@ const Formations = () => {
 
                   <TabsContent value="objectifs" className="mt-6">
                     <div>
-                      <h3 className="text-lg font-semibold mb-4 flex items-center">
-                        <Trophy className="w-5 h-5 mr-2 text-[#130159]" />
+                      <h3 className="text-lg font-semibold mb-4 flex items-center text-[#130159]">
+                        <Trophy className="w-5 h-5 mr-2 text-[#21c45d]" />
                         Objectifs de la formation
                       </h3>
                       <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
@@ -421,7 +421,7 @@ const Formations = () => {
 
               {/* Message d'instruction sur mobile */}
               <p className="lg:hidden text-center text-gray-600 dark:text-gray-400 mb-6 px-4">
-                Cliquez sur une formation pour voir ses détails en grand.
+                Cliquez sur une formation pour voir ses détails.
               </p>
 
               <div className="space-y-4">
@@ -436,7 +436,7 @@ const Formations = () => {
                   >
                     <CardHeader className="pb-4">
                       <div className="flex items-center justify-between">
-                        <Badge className="text-[#21c45d] bg-emerald-100">{formation.niveau}</Badge>
+                        <Badge className="text-[#51be78] bg-emerald-100">{formation.niveau}</Badge>
                       </div>
                       <motion.h3
                         layoutId={`title-${formation.id}-${id}`}
@@ -505,14 +505,14 @@ const Formations = () => {
                   </div>
 
                   <Tabs defaultValue="objectifs" className="w-full">
-                    <TabsList className="grid w-full grid-cols-2 text-[#130159]">
+                    <TabsList className="grid w-full grid-cols-2 text-[#130159] font-bold">
                       <TabsTrigger value="objectifs">Objectifs</TabsTrigger>
                       <TabsTrigger value="debouches">Débouchés</TabsTrigger>
                     </TabsList>
 
                     <TabsContent value="objectifs" className="mt-6">
                       <div>
-                        <h3 className="text-lg font-semibold mb-4 flex items-center text-[#130159] hover:text-green-600">
+                        <h3 className="text-lg font-semibold mb-4 flex items-center text-[#130159]">
                           <Trophy className="w-5 h-5 mr-2 text-[#21c45d]" />
                           Objectifs de la formation
                         </h3>
@@ -524,7 +524,7 @@ const Formations = () => {
                       </div>
                     </TabsContent>
 
-                    <TabsContent value="debouches" className="mt-6 text-[#130159]">
+                    <TabsContent value="debouches" className="mt-6">
                       <div>
                         <h3 className="text-lg font-semibold mb-4 flex items-center text-[#130159]">
                           <Briefcase className="w-5 h-5 mr-2 text-[#21c45d]" />

@@ -94,16 +94,16 @@ export default function GaleriePage() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center">
             {filters.map((filter) => (
-              <Button
+              <button
                 key={filter}
-                variant={activeFilter === filter}
-                size="sm lg:md"
+                variant={activeFilter === filter ? "border border-2 rounded-md text-[#130159] " : ""}
+                size="sm"
                 onClick={() => setActiveFilter(filter)}
                 className={activeFilter === filter ? "font-bold bg-[#130159] text-white px-3 py-1 border border-[#130159] rounded-md" 
                   : "text-[#130159] bg-white px-3 py-1 border border-[#130159] rounded-md"}
               >
                 {filter}
-              </Button>
+              </button>
             ))}
           </div>
         </div>

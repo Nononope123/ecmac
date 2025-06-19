@@ -98,14 +98,14 @@ export function Formulaire() {
 
           {/* Acte de naissance numérisé */}
           <div>
-            <label htmlFor="acteNaissance" className="block text-md font-medium text-white">Acte de naissance numérisé</label>
+            <label htmlFor="acteNaissance" className="block text-md font-medium text-white">Acte de naissance numérisé <br/> </label>
             <div className="mt-1 flex justify-center px-2 pt-2 pb-2 border-2 border-gray-300 border-dashed rounded-md">
               <div className="space-y-1 text-center">
-                <svg className="mx-auto h-12 w-6 text-gray-400" stroke="white" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                <svg className="mx-auto h-12 w-6 text-white" stroke="white" fill="none" viewBox="0 0 48 48" aria-hidden="true">
                   <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L40 32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <div className="flex text-md text-gray-600">
-                  <label htmlFor="acteNaissance" className="relative cursor-pointer  rounded-md font-medium text-white hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                  <label htmlFor="acteNaissance" className="relative cursor-pointer  rounded-md font-medium text-white hover:text-blue-500">
                     <span>Choisir un fichier</span>
                     <input id="acteNaissance" name="acteNaissance" type="file" className="sr-only" accept=".pdf,image/jpeg,image/png" required />
                   </label>
@@ -120,14 +120,14 @@ export function Formulaire() {
 
           {/* Bulletins ou attestation de scolarité numérisé */}
           <div>
-            <label htmlFor="bulletinScolarite" className="block text-md font-medium text-white">Bulletin de note ou attestation de scolarité numérisé</label>
+            <label htmlFor="bulletinScolarite" className="block text-md font-medium text-white">Bulletins ou attestation de scolarité numérisé</label>
             <div className="mt-1 flex justify-center px-2 pt-2 pb-2 border-2 border-gray-300 border-dashed rounded-md">
               <div className="space-y-1 text-center">
                 <svg className="mx-auto h-12 w-6 text-gray-400" stroke="white" fill="none" viewBox="0 0 48 48" aria-hidden="true">
                   <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L40 32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <div className="flex text-md text-white">
-                  <label htmlFor="bulletinScolarite" className="relative cursor-pointer  rounded-md font-medium text-white hover:text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                  <label htmlFor="bulletinScolarite" className="relative cursor-pointer rounded-md font-medium text-white hover:text-blue-500">
                     <span>Choisir un fichier</span>
                     <input id="bulletinScolarite" name="bulletinScolarite" type="file" className="sr-only" accept=".pdf,image/jpeg,image/png" required />
                   </label>
@@ -160,11 +160,11 @@ export function Formulaire() {
             <label htmlFor="photos" className="block text-md font-medium text-white">2 photos numérisées</label>
             <div className="mt-1 flex justify-center px-2 pt-2 pb-2 border-2 border-gray-300 border-dashed rounded-md">
               <div className="space-y-1 text-center">
-                <svg className="mx-auto h-6 w-12 text-gray-400" stroke="white" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                <svg className="mx-auto h-12 w-6 text-white" stroke="white" fill="none" viewBox="0 0 48 48" aria-hidden="true">
                   <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L40 32" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 <div className="flex text-sm text-gray-600">
-                  <label htmlFor="photos" className="relative cursor-pointer rounded-md font-medium text-white hover:text-gray-400 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-blue-500">
+                  <label htmlFor="photos" className="relative cursor-pointer rounded-md font-medium text-white hover:text-blue-500">
                     <span>Sélectionner fichiers</span>
                     <input id="photos" name="photos" type="file" multiple className="sr-only" accept="image/jpeg,image/png" required />
                   </label>
