@@ -97,6 +97,9 @@ export default function ActualitesPage() {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages))
   }
 
+  useEffect(() => {
+  const now = Date.now();
+}, []);
 
   useEffect(() => {
     setCurrentPage(1);
@@ -169,7 +172,7 @@ export default function ActualitesPage() {
                       {featuredActualite.excerpt}
                     </p>
 
-                    <div className="flex items-center justify-between">
+                    {/* <div className="flex items-center justify-between">
                       <Link href={`/actualites/${featuredActualite.id}`} passHref>
                         <Button className="w-full bg-emerald-600 hover:text-white text-sm">
                           <span className="absolute inset-0 w-full h-full bg-[#130159] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out z-0 group-hover:text-white"></span>
@@ -179,7 +182,7 @@ export default function ActualitesPage() {
                           </span>
                         </Button>
                       </Link>
-                    </div>
+                    </div> */}
 
                   </CardContent>
                 </Card>
@@ -228,11 +231,11 @@ export default function ActualitesPage() {
 
                           <p className="text-gray-600 mb-4">{actualite.excerpt}</p>
 
-                          <div className="flex items-center justify-between">
+                          {/* <div className="flex items-center justify-between">
                             <Link href={`/actualites/${actualite.id}`} className="text-emerald-600 hover:underline">
                               Lire plus
                             </Link>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </CardContent>
